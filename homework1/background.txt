@@ -12,7 +12,7 @@
 # No points will be awarded to incorrectly-formatted files.
 
 #@ 1 -- enter a number with two significant digits
-38.5
+38
 #@ 2 -- enter 'a', 'b', or 'c'
 c
 #@ 3 -- enter a number with three significant digits
