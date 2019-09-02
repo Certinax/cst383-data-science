@@ -1,0 +1,11 @@
+{
+  "name": "datascience",
+  "version": "1.0.0",
+  "description": "Course material and homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mathias Lund Ahrn",
+  "license": "ISC"
+}
