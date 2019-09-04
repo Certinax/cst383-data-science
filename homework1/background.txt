@@ -28,6 +28,6 @@ c
 #@ 8 -- enter 'a', 'b', or 'c'
 a
 #@ 9 -- enter a Python expression that refers to variables s1 and s2
-print(s1+s2)
+s1+s2
 #@ 10 -- enter a number with three significant digits
 4.00
