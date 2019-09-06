@@ -189,7 +189,7 @@ width[height < 5.0]
 # should have 9 elements and the first should be about -0.0889
 # assume array 'width' is defined
 # (write an expression)
-
+width - np.average(width)
 
 #@ 19
 # compute a '0-1 scaled' version of array 'length' by subtracting
@@ -202,7 +202,7 @@ width[height < 5.0]
 # Do not use a loop, and do not modify 'length'.
 # assume array length is defined
 # (write an expression)
-
+(height - min(height))/(max(height)-min(height))
 
 #@ 20
 # create a 1D NumPy array 'parts' that contains the 'width'
@@ -211,7 +211,7 @@ width[height < 5.0]
 # and the last values should be 5.6, 5.5, 5.4.
 # assume arrays length and width are defined
 # (assignment to parts)
-
+parts = np.hstack([width, height])
 
 #@ 21
 # reshape the parts array so that it is a 2D NumPy array, with
@@ -222,7 +222,7 @@ width[height < 5.0]
 # Example: parts[2,1] = 5.2
 # assume array parts is defined
 # (assignment to parts)
-
+parts = np.transpose(np.reshape(parts, (2,9)))
 
 #@ 22
 # write an expression to get the all rows of parts after
@@ -230,7 +230,7 @@ width[height < 5.0]
 # Example: the first row of your output should be [3., 5.2]
 # assume array parts is defined
 # (write an expression)
-
+parts[2:,]
 
 # Next we are going to think about how we could measure the
 # similarity between parts.  One way to do it is to think
