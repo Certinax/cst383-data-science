@@ -275,17 +275,7 @@ np.sqrt(((x1-x2)**2)+((y1-y2)**2)) # 0.141...
 # (define function distance)
 def distance(width, height, parts):
     # your code here
-    point = np.array([width, height])
-
-    dist_list = np.empty((0, parts.size), float)
-    for part in parts:
-        distance = np.sqrt(((part[0]-point[0])**2)+((part[1]-point[1])**2))
-        #print(distance)
-        dist_list = np.append(dist_list, distance)
-    return dist_list
-    #print(np.sqrt(((x1-parts[-1][0])**2)+((y1-parts[-1][1])**2)))
-
-#print(distance(3.0, 4.8, parts))
+    return np.sqrt(((width-parts[:,0])**2)+((height-parts[:,1])**2))
         
 #@ 25
 # Define a function 'predict_part_num' that, given a width and a height
