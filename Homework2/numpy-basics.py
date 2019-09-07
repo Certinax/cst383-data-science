@@ -252,7 +252,14 @@ parts[2:,]
 # work correctly if array 'parts' contains different values.
 # assume array 'parts' is defined
 # (write an expression)
-
+#np.sqrt((parts[]))
+p1 = parts[0] # [3.1, 5.2]
+p2 = parts[1] # [3.0, 5.3]
+x1 = p1[0]    # 3.1
+x2 = p2[0]    # 3.0
+y1 = p1[1]    # 5.2
+y2 = p2[1]    # 5.3
+np.sqrt(((x1-x2)**2)+((y1-y2)**2)) # 0.141...
 
 #@ 24
 # Suppose we find a part and measure it. We find the width is 3.15 and
@@ -266,9 +273,19 @@ parts[2:,]
 # an array of 9 values, the last being about 0.67
 # 
 # (define function distance)
-#def distance(width, height, parts):
+def distance(width, height, parts):
     # your code here
+    point = np.array([width, height])
 
+    dist_list = np.empty((0, parts.size), float)
+    for part in parts:
+        distance = np.sqrt(((part[0]-point[0])**2)+((part[1]-point[1])**2))
+        #print(distance)
+        dist_list = np.append(dist_list, distance)
+    return dist_list
+    #print(np.sqrt(((x1-parts[-1][0])**2)+((y1-parts[-1][1])**2)))
+
+#print(distance(3.0, 4.8, parts))
         
 #@ 25
 # Define a function 'predict_part_num' that, given a width and a height
