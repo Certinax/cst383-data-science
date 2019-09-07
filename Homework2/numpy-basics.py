@@ -274,7 +274,7 @@ np.sqrt(((x1-x2)**2)+((y1-y2)**2)) # 0.141...
 # 
 # (define function distance)
 def distance(width, height, parts):
-    # your code here
+    # your code here    
     return np.sqrt(((width-parts[:,0])**2)+((height-parts[:,1])**2))
         
 #@ 25
@@ -291,5 +291,9 @@ def distance(width, height, parts):
 # most_similar_part(3.0, 4.8, parts) should return the list ['part1', 'part3']
 #
 # (define function most_similar_part)
-#def most_similar_part(width, height, parts):
+def most_similar_part(width, height, parts):
     # your code here
+    dist = distance(width, height, parts)
+    offset = 0.01
+    return part_num[dist <= min(dist) + offset]
+
