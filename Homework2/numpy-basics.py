@@ -45,14 +45,13 @@ msg = "hello"
 # Example: if msg = 5.0, the result should be False
 # assume msg is defined
 # (write an expression)
-isinstance(msg, (int, float))
-msg.isdigit()
+not isinstance(msg, (int, float, complex))
 
 #@ 4 compute the result of squaring x
 # Example: if x is 2.5, the result should be 6.25
 # assume x is defined
 # (write an expression)
-x**2
+np.power(x, 2)
 
 #@ 5 
 # compute the length of the string obtained by appending strings 
@@ -60,13 +59,13 @@ x**2
 # Example: if s1 is 'foo', and s2 is 'bar', the result should be 7
 # assume s1 and s2 are defined
 # (write an expression)
-len(s1+" "+s2)
+#len(s1 + " " + s2)
 
 #@ 6 compute the substring consisting of the 2nd-4th characters of string s
 # Example: if s is 'snorkel', the result should be 'nor'.
 # assume s is defined
 # (write an expression)
-s[1:4]
+#s[1:4]
 
 
 #@ 7
@@ -202,7 +201,7 @@ width - np.average(width)
 # Do not use a loop, and do not modify 'length'.
 # assume array length is defined
 # (write an expression)
-(height - min(height))/(max(height)-min(height))
+(height - np.min(height))/(np.max(height)-np.min(height))
 
 #@ 20
 # create a 1D NumPy array 'parts' that contains the 'width'
@@ -295,5 +294,5 @@ def most_similar_part(width, height, parts):
     # your code here
     dist = distance(width, height, parts)
     offset = 0.01
-    return part_num[dist <= min(dist) + offset]
+    return part_num[dist <= np.min(dist) + offset]
 
