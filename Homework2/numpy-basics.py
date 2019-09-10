@@ -221,7 +221,9 @@ parts = np.hstack([width, length])
 # Example: parts[2,1] = 5.2
 # assume array parts is defined
 # (assignment to parts)
-parts = np.transpose(np.reshape(parts, (2,9))) # Could also use order='F' in reshape instead of np.transpose
+parts = np.transpose(np.reshape(parts, (2,9))) # Could also use order='F' in 
+                                               # reshape as third argument 
+                                               # instead of np.transpose
 
 #@ 22
 # write an expression to get the all rows of parts after
