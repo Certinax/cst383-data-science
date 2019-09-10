@@ -33,7 +33,7 @@ import numpy as np
 # assign the value of variable z to variable x
 # assume z is define
 # (assignment to x)
-#x = z
+x = z
 
 #@ 2 
 # assign 'hello' to variable msg
@@ -59,13 +59,13 @@ np.power(x, 2)
 # Example: if s1 is 'foo', and s2 is 'bar', the result should be 7
 # assume s1 and s2 are defined
 # (write an expression)
-#len(s1 + " " + s2)
+len(s1 + " " + s2)
 
 #@ 6 compute the substring consisting of the 2nd-4th characters of string s
 # Example: if s is 'snorkel', the result should be 'nor'.
 # assume s is defined
 # (write an expression)
-#s[1:4]
+s[1:4]
 
 
 #@ 7
@@ -102,7 +102,7 @@ width = np.array([3.1, 3.0, 3.0, 3.1, 3.2, 3.2, 3.4, 3.4, 3.3])
 # Repeat the previous problem, but create a NumPy array 'length'
 # that contains the length values in the data.
 # (assignment to length)
-height = np.array([5.2, 5.3, 5.2, 4.8, 4.9, 4.8, 5.6, 5.5, 5.4])
+length = np.array([5.2, 5.3, 5.2, 4.8, 4.9, 4.8, 5.6, 5.5, 5.4])
 
 #@ 9
 # Compute a numpy array containing the square root of every element 
@@ -112,7 +112,7 @@ height = np.array([5.2, 5.3, 5.2, 4.8, 4.9, 4.8, 5.6, 5.5, 5.4])
 # about 2.32
 # assume 'length' is defined
 # (write an expression)
-np.sqrt(height)
+np.sqrt(length)
 
 #@ 10
 # write an expression to compute the average value in the array 'width'
@@ -126,13 +126,13 @@ np.average(width)
 # the same number of elements
 # assume 'width' and 'length' are defined
 # (write an expression)
-np.equal(height.size, width.size)
+np.equal(length.size, width.size)
 
 #@ 12
 # write an expression to compute the maximum value in array 'length'
 # assume length is defined
 # (write an expression)
-np.max(height)
+np.max(length)
 
 #@ 13
 # create a NumPy array 'part_num' containing the part numbers in
@@ -149,8 +149,8 @@ part_num = np.array(["part1", "part1", "part1",
 # Example: mask[8] should be True
 # assume array 'width' is defined
 # (assignment to mask)
-mask = np.array(width > 3.15)
- 
+mask = width > 3.15
+
 #@ 15
 # using the variable 'mask' just defined, compute an array
 # of the part numbers of the parts for which the value of mask is True
@@ -178,7 +178,7 @@ mask[mask == True].size/mask.size
 # your result should be 3.1, 3.2, 3.2
 # assume 'width' and 'length' are defined
 # (write an expression)
-width[height < 5.0]
+width[length < 5.0]
 
 #@ 18
 # compute the mean-zeroed version of width by subtracting
@@ -201,7 +201,7 @@ width - np.average(width)
 # Do not use a loop, and do not modify 'length'.
 # assume array length is defined
 # (write an expression)
-(height - np.min(height))/(np.max(height)-np.min(height))
+(length - np.min(length))/(np.max(length)-np.min(length))
 
 #@ 20
 # create a 1D NumPy array 'parts' that contains the 'width'
@@ -210,7 +210,7 @@ width - np.average(width)
 # and the last values should be 5.6, 5.5, 5.4.
 # assume arrays length and width are defined
 # (assignment to parts)
-parts = np.hstack([width, height])
+parts = np.hstack([width, length])
 
 #@ 21
 # reshape the parts array so that it is a 2D NumPy array, with
@@ -221,7 +221,7 @@ parts = np.hstack([width, height])
 # Example: parts[2,1] = 5.2
 # assume array parts is defined
 # (assignment to parts)
-parts = np.transpose(np.reshape(parts, (2,9)))
+parts = np.transpose(np.reshape(parts, (2,9))) # Could also use order='F' in reshape instead of np.transpose
 
 #@ 22
 # write an expression to get the all rows of parts after
@@ -229,7 +229,7 @@ parts = np.transpose(np.reshape(parts, (2,9)))
 # Example: the first row of your output should be [3., 5.2]
 # assume array parts is defined
 # (write an expression)
-parts[2:,]
+parts[2:]
 
 # Next we are going to think about how we could measure the
 # similarity between parts.  One way to do it is to think
@@ -272,10 +272,10 @@ np.sqrt(((x1-x2)**2)+((y1-y2)**2)) # 0.141...
 # an array of 9 values, the last being about 0.67
 # 
 # (define function distance)
-def distance(width, height, parts):
+def distance(width, length, parts):
     # your code here    
-    return np.sqrt(((width-parts[:,0])**2)+((height-parts[:,1])**2))
-        
+    return np.sqrt(((width-parts[:,0])**2)+((length-parts[:,1])**2))
+
 #@ 25
 # Define a function 'predict_part_num' that, given a width and a height
 # of an unknown part, returns the part number of the part in array 'parts'
@@ -290,9 +290,8 @@ def distance(width, height, parts):
 # most_similar_part(3.0, 4.8, parts) should return the list ['part1', 'part3']
 #
 # (define function most_similar_part)
-def most_similar_part(width, height, parts):
+def most_similar_part(width, length, parts):
     # your code here
-    dist = distance(width, height, parts)
+    dist = distance(width, length, parts)
     offset = 0.01
     return part_num[dist <= np.min(dist) + offset]
-
