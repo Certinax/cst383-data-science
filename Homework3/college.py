@@ -230,7 +230,7 @@ df[df["ShareWomen"] == df["ShareWomen"].max()].index[0]
 # SPECIAL NEEDS EDUCATION                          35000
 # ELEMENTARY EDUCATION                             32000
 # (write an expression)
-print(df[df["ShareWomen"] > 0.9]["Median"])
+df[df["ShareWomen"] > 0.9]["Median"]
 
 #@ 14
 # Compute a series containing the median earnings for all the 
@@ -241,14 +241,14 @@ print(df[df["ShareWomen"] > 0.9]["Median"])
 # MINING AND MINERAL ENGINEERING                  75000
 # NAVAL ARCHITECTURE AND MARINE ENGINEERING       70000
 # (write an expression)
-
+df[df["ShareWomen"] < 0.15]["Median"]
 
 #@ 15
 # Compute the ratio of the median of the highest earning major
 # to the median of the lowest earning major.  Your output should
 # be a single number, and it should be close to 5.
 # (write an expression)
-
+df["Median"].max()/df["Median"].min()
 
 #@ 16
 # Compute the top 10 majors by median earnings.  For each of these
@@ -262,12 +262,13 @@ print(df[df["ShareWomen"] > 0.9]["Median"])
 # METALLURGICAL ENGINEERING                   73000  50000  105000
 # NAVAL ARCHITECTURE AND MARINE ENGINEERING   70000  43000   80000
 # (write an expression)
-
+df[["Median", "P25th", "P75th"]].sort_values(by="Median", ascending=False)[:10]
 
 #@ 17
 # Repeat the previous problem, but compute the 10 majors with the
 # lowest median earnings, and sort with lowest meadian salary first
 # (write an expression)
+df[["Median", "P25th", "P75th"]].sort_values(by="Median", ascending=True)[:10]
 
 
 #@ 18
@@ -281,6 +282,7 @@ print(df[df["ShareWomen"] > 0.9]["Median"])
 # NUCLEAR, INDUSTRIAL RADIOLOGY, AND BIOLOGICAL TECHNOLOGIES           0.697070
 # ELECTRICAL, MECHANICAL, AND PRECISION TECHNOLOGIES AND PRODUCTION    0.681314
 # (write an expression)
+(df["Non_college_jobs"]/df["Total"]).sort_values(ascending=False)[:10]
 
 
 #@ 19
@@ -292,7 +294,7 @@ print(df[df["ShareWomen"] > 0.9]["Median"])
 # Business                               1302376.0
 # Humanities & Liberal Arts               713468.0
 # (write an expression)
-
+(df.groupby("Major_category").aggregate({'Total':'sum'})).sort_values(by="Total", ascending=False)
 
 #@ 20
 # For each major category, compute the fraction of people
@@ -304,6 +306,7 @@ print(df[df["ShareWomen"] > 0.9]["Median"])
 # Humanities & Liberal Arts              0.105361
 # Education                              0.082569
 # (write an expression)
+((df.groupby("Major_category").aggregate({'Total':'sum'}))/df["Total"].sum()).sort_values(by="Total", ascending=False)
 
 
 #@ 21
@@ -315,7 +318,7 @@ print(df[df["ShareWomen"] > 0.9]["Median"])
 # Biology & Life Science                 14
 #
 # (write an expression)
-
+df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 
 #@ 22
 # Add a new variable 'HighShareWomen' to the data frame.
