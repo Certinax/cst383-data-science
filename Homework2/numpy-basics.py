@@ -27,13 +27,14 @@ import numpy as np
 # other words, if you defined a variable as a temporary variable
 # in a problem, do not use it in other problems.
 
+
 # Please ask if anything is not clear!
 
 #@ 1 
 # assign the value of variable z to variable x
 # assume z is define
 # (assignment to x)
-x = z
+#x = z
 
 #@ 2 
 # assign 'hello' to variable msg
@@ -51,7 +52,7 @@ not isinstance(msg, (int, float, complex))
 # Example: if x is 2.5, the result should be 6.25
 # assume x is defined
 # (write an expression)
-np.power(x, 2)
+#np.power(x, 2)
 
 #@ 5 
 # compute the length of the string obtained by appending strings 
@@ -59,13 +60,13 @@ np.power(x, 2)
 # Example: if s1 is 'foo', and s2 is 'bar', the result should be 7
 # assume s1 and s2 are defined
 # (write an expression)
-len(s1 + " " + s2)
+#len(s1 + " " + s2)
 
 #@ 6 compute the substring consisting of the 2nd-4th characters of string s
 # Example: if s is 'snorkel', the result should be 'nor'.
 # assume s is defined
 # (write an expression)
-s[1:4]
+#s[1:4]
 
 
 #@ 7
@@ -150,6 +151,7 @@ part_num = np.array(["part1", "part1", "part1",
 # assume array 'width' is defined
 # (assignment to mask)
 mask = width > 3.15
+
 
 #@ 15
 # using the variable 'mask' just defined, compute an array
@@ -297,3 +299,7 @@ def most_similar_part(width, length, parts):
     dist = distance(width, length, parts)
     offset = 0.01
     return part_num[dist <= np.min(dist) + offset]
+
+print(most_similar_part(3.2, 5.3, parts))
+
+#print(distance(3.15, 5.35, parts))
