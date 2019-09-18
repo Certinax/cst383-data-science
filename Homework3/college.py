@@ -325,13 +325,13 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # This variable should be True if ShareWomen > 0.50, and
 # False otherwise.
 # (modify df)
-
+df["HighShareWomen"] = df["ShareWomen"].values > 0.5
 
 #@ 23
 # Compute the fraction of majors that have a high share of women.
 # Your result should be a number close to 0.56
 # (write an expression)
-
+df[df["HighShareWomen"] == True]["HighShareWomen"].size/df["HighShareWomen"].size
 
 #@ 24
 # For each major, compute the fraction of those working in
@@ -345,7 +345,7 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # CLINICAL PSYCHOLOGY                       0.219168
 # STUDIO ARTS                               0.211227
 # (write an expression)
-
+(df["Low_wage_jobs"]/df["Total"]).sort_values(ascending=False)[:10]
 
 #@ 25
 # For each major category, compute the maximum of the median
@@ -357,7 +357,7 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # Physical Sciences                       62000
 # Business                                62000
 # (write an expression)
-
+df.groupby("Major_category").aggregate({"Median": "max"}).sort_values(by="Median", ascending=False)
 
 #@ 26
 # Compute the average median salary for each major category
@@ -368,7 +368,7 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # Humanities & Liberal Arts              31913.333333
 # Education                              32350.000000
 # (write an expression)
-
+df.groupby("Major_category").aggregate({"Median": "mean"}).sort_values(by="Median", ascending=True)
 
 # The answer to the previous question does not accurately
 # represent the median salary for a major category, because
@@ -385,13 +385,12 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # associated with the major. The sum of the new column should be 1.0
 # or very close to 1.0.
 # (write a statement)    (note: formerly this incorrectly asked for an expression)
-
+df["Major_share"] = df["Total"]/df["Total"].sum()
 
 ###############################################################
 # In the remaining problems you can assume that df additionally
 # contains the column 'Major_share'
 ###############################################################
-
 
 #@ 28
 # Now compute the weighted median salary for each major category,
@@ -406,7 +405,11 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # Biology & Life Science                 34446.722572
 # Business                               40942.111188
 # (write an expression)
+def weighted_median_salary(x):
+    return ((x["Median"] * x["Major_share"]) / x["Major_share"].sum()).sum()
+    
 
+df.groupby("Major_category").apply(weighted_median_salary)
 
 #@ 29
 # Using the same idea as the last problem to compute
@@ -418,7 +421,11 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # Arts                                   0.089105
 # Biology & Life Science                 0.070219
 # (write an expression)
+def weighted_mean_unemployment_rate(x):
+    return ((x["Unemployment_rate"] * x["Major_share"]) / x["Major_share"].sum()).sum()
+    
 
+df.groupby("Major_category").apply(weighted_mean_unemployment_rate)
 
 #@ 30
 # Compute the share of women by major category.  to do this
@@ -431,7 +438,11 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # Biology & Life Science                 0.592566
 # Business                               0.487205
 # (write an expression)
+def weighted_sharewomen(x):
+    return ((x["ShareWomen"] * x["Major_share"]) / x["Major_share"].sum()).sum()
+    
 
+df.groupby("Major_category").apply(weighted_sharewomen)
 
 #@ 31
 # compute the mean median salary for majors with
@@ -446,6 +457,11 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # True     34692.752128
 # dtype: float64
 # (write an expression)
+def mean_median_sal(x):
+    return ((x["Median"] * x["Major_share"])/x["Major_share"].sum()).sum()
+    
+
+df.groupby("HighShareWomen").apply(mean_median_sal)
 
 
 #@ 32
@@ -457,6 +473,10 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # Computers & Mathematics                0.053965
 # Health                                 0.067504
 # (write an expression)
+def low_wage_fraction(x):
+    return (x["Low_wage_jobs"]/x["Total"].sum()).sum()
+
+df.groupby("Major_category").apply(low_wage_fraction).sort_values(ascending=True)
 
 
 #@ 33
@@ -469,10 +489,8 @@ df.groupby(["Major_category"])["Total"].count().sort_values(ascending=False)
 # Humanities & Liberal Arts              0.085852
 # Law & Public Policy                    0.085258
 # (write an expression)
+def unemployment_rate(x):
+    return (x["Unemployed"]/(x["Employed"] + x["Unemployed"]).sum()).sum()
 
-
-
-
-
-
+df.groupby("Major_category").apply(unemployment_rate).sort_values(ascending=False)
 

@@ -89,7 +89,6 @@ x = [random.random() for i in range(1000000)]
 
 # write a python loop to compute the sum of the values in x
 sum = 0
-print(x)
 # define a Python function named 'array_sum' that will return
 # the sum of the specified NumPy array x
 
