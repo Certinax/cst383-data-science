@@ -1,0 +1,32 @@
+
+# Instructions: edit this file to provide your homework answers.
+# Problem numbers are shown on lines that begin with #@.
+#
+# Please put your solution to a problem after the line that gives
+# the number of that problem.  Each problem shows how your answer
+# should be given.
+#
+
+#@ 1 -- enter 'a', 'b', or 'c'  (don't use quotes in your answer)
+c
+
+#@ 2 -- enter 'y' or 'n'
+y
+
+#@ 3 -- enter 'a', 'b', or 'c'
+c
+
+#@ 4 -- enter 'y' or 'n'
+y
+
+#@ 5 -- enter a number between 0 and 1, inclusive, as a decimal number or a fraction. 
+0.25
+
+#@ 6 -- enter a number between 0 and 1, inclusive
+0.25
+
+#@ 7 -- enter a number between 0 and 1, inclusive
+0.44
+
+#@ 8 -- enter a number between 0 and 1, inclusive
+0.52
