@@ -122,7 +122,7 @@ ax[1].set_xlim([0.85, 0.95])
 # "flipping a 0/1 coin" that is weighted 99% to 0.  Approximately 
 # 99% of the values in x should be 0, and the others should be one.
 # (assignment to x)
-x = np.random.choice(2, 10000, p=[0.9, 0.1])
+x = np.random.choice(2, 10000, p=[0.99, 0.01])
 
 
 #@ 9
@@ -133,6 +133,7 @@ x = np.random.choice(2, 10000, p=[0.9, 0.1])
 # array x, by flipping a 0/1 coin that is weighted 95% to 0.
 # Assume x is defined.
 # (assignment to y0)
+y0 = np.random.choice(2, len(x[x==0]), p=[0.95, 0.05])
 
 
 #@ 10
@@ -143,6 +144,7 @@ x = np.random.choice(2, 10000, p=[0.9, 0.1])
 # array x, by flipping a 0/1 coin that is weighted 98% to 1.
 # Assume x is defined.
 # (assignment to y1)
+y1 = np.random.choice(2, len(x[x==1]), p=[0.02, 0.98])
 
 
 #@ 11
@@ -151,7 +153,7 @@ x = np.random.choice(2, 10000, p=[0.9, 0.1])
 # number of 1's in y0.
 # Assume y0 is defined.
 # (assignment to pos_no_meas)
-
+pos_no_meas = np.zeros(len(y0[y0==1]))
 
 #@ 12
 # Collect the measles-infected people among those who tested positive.
@@ -159,7 +161,7 @@ x = np.random.choice(2, 10000, p=[0.9, 0.1])
 # the number of 1's in y1.
 # Assume y1 is defined.
 # (assignment to pos_with_meas)
-
+pos_with_meas = np.ones(len(y1[y1==1]))
 
 #@ 13
 # Collect information about all people who tested positive.
@@ -168,7 +170,7 @@ x = np.random.choice(2, 10000, p=[0.9, 0.1])
 # no measles; a 1 means measles.
 # Assume pos_no_meas and pos_with_meas are defined.
 # (assignment to tested_pos)
-
+tested_pos = np.concatenate((pos_no_meas, pos_with_meas))
 
 #@ 14
 # Estimate the probability of having measles if you've tested
@@ -177,6 +179,7 @@ x = np.random.choice(2, 10000, p=[0.9, 0.1])
 # variable 'p'.
 # Assume tested_pos is defined.
 # (assignment to p) 
+p = len(tested_pos[tested_pos == 1]) / len(tested_pos)
 
 
 #@ 15
@@ -208,8 +211,14 @@ x = np.random.choice(2, 10000, p=[0.9, 0.1])
 # including the return statement.
 # (define a function)
 
-#def prob_cond_given_pos(prob_cond, prob_pos_given_cond, prob_neg_given_no_cond):
-    # YOUR CODE HERE
+def prob_cond_given_pos(prob_cond, prob_pos_given_cond, prob_neg_given_no_cond):
+    x = np.random.choice(2, 10000, p=[1-prob_cond, prob_cond])
+    y0 = np.random.choice(2, len(x[x==0]), p=[prob_neg_given_no_cond, 1-prob_neg_given_no_cond])
+    y1 = np.random.choice(2, len(x[x==1]), p=[1-prob_pos_given_cond, prob_pos_given_cond])
+    pos_no_meas = np.zeros(len(y0[y0==1]))
+    pos_with_meas = np.ones(len(y1[y1==1]))
+    tested_pos = np.concatenate((pos_no_meas, pos_with_meas))
+    return len(tested_pos[tested_pos == 1]) / len(tested_pos)
 
 #
 # Part 3 - compute the answer using Bayes' Law
@@ -232,8 +241,8 @@ x = np.random.choice(2, 10000, p=[0.9, 0.1])
 # including the return statement.
 # (define a function)
 
-#def prob_cond_given_pos_bayes(prob_cond, prob_pos_given_cond, prob_neg_given_no_cond):
-    # YOUR CODE HERE
+def prob_cond_given_pos_bayes(prob_cond, prob_pos_given_cond, prob_neg_given_no_cond):
+    return (prob_pos_given_cond*prob_cond) / ((prob_pos_given_cond*prob_cond)+(1-prob_neg_given_no_cond)*(1-prob_cond))
 
 #@ 17
 # How does the probability of having a condition given you
@@ -249,4 +258,11 @@ x = np.random.choice(2, 10000, p=[0.9, 0.1])
 # appropriately.  Use matplotlib.
 # Assume function prob_cond_given_pos_bayes() is defined.
 # (produce a plot)
-    
+x = np.arange(0.001, 0.1, ((0.1-0.001)/100))
+prob_meas = np.array([prob_cond_given_pos_bayes(x[i], 0.98, 0.95) for i in range(100)])
+
+fig, ax = plt.subplots(2)
+ax[0].hist(prob_meas)
+ax[1].scatter(x, prob_meas)
+ax[1].set_xlabel("Probability of having condition")
+ax[1].set_ylabel("Probability of condition if tested positive")
