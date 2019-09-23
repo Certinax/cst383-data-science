@@ -50,17 +50,19 @@ x = np.random.choice(2, 200, p=[0.1, 0.9])
 # (assignment to x)
 x = np.random.sample(size=200)
 
+weights = [0.1, 0.9]
+cs = np.cumsum(weights)
+
 def calculated_weights(x):
-    weights = [0.1, 0.9]
-    cs = np.cumsum(weights)
     return sum(cs < x)
 
-vectroized_calculated_weights = np.vectorize(calc)
+vectroized_calculated_weights = np.vectorize(calculated_weights)
 x = vectroized_calculated_weights(x)
 
 #@ 3
 # compute the fraction of values in array x that are 1.
 # (expression)
+len(x[x == 1]) / len(x)
 
 
 #@ 4
@@ -68,17 +70,27 @@ x = vectroized_calculated_weights(x)
 # of values that are 1, and repeat this entire process 100 times to
 # get an array of length 100.  Assign this array to variable y1.
 # (assignment to y1)
+def t200():
+    return np.random.choice(2, 200, p=[0.1, 0.9])
 
+y1 = np.array([len(t200()[t200()==1])/len(t200()) for i in range(100)])
 
 #@ 5
 # plot a histogram of y1 using matplotlib
 # (produce a plot)
-
+#plt.hist(y1)
+#plt.title("Fraction of 1's for 200 biased coin tosses a 100 times")
+#plt.xlabel("Fraction of 1's in a given attempt (of 200 tosses)")
+#plt.ylabel("frequency")
 
 #@ 6
 # compute a NumPy array y2 that is just like y1, except that in creating y2
 # we do 1000 coin flips in each experiment, not 200.
 # (assignment to y2)
+def t1000():
+    return np.random.choice(2, 1000, p=[0.1, 0.9])
+
+y2 = np.array([len(t1000()[t1000()==1])/len(t1000()) for i in range(100)])
 
 
 #@ 7
@@ -90,6 +102,12 @@ x = vectroized_calculated_weights(x)
 # Assume y1 and y2 are defined.
 # (produce a plot)
 
+fig, ax = plt.subplots(2)
+fig.suptitle("Histograms for Y1 and Y2")
+ax[0].hist(y1)
+ax[1].hist(y2)
+ax[0].set_xlim([0.85, 0.95])
+ax[1].set_xlim([0.85, 0.95])
 
 #
 # Part 2 - simulate the answer to the question
@@ -104,6 +122,7 @@ x = vectroized_calculated_weights(x)
 # "flipping a 0/1 coin" that is weighted 99% to 0.  Approximately 
 # 99% of the values in x should be 0, and the others should be one.
 # (assignment to x)
+x = np.random.choice(2, 10000, p=[0.9, 0.1])
 
 
 #@ 9
