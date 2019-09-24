@@ -78,10 +78,10 @@ y1 = np.array([len(t200()[t200()==1])/len(t200()) for i in range(100)])
 #@ 5
 # plot a histogram of y1 using matplotlib
 # (produce a plot)
-#plt.hist(y1)
-#plt.title("Fraction of 1's for 200 biased coin tosses a 100 times")
-#plt.xlabel("Fraction of 1's in a given attempt (of 200 tosses)")
-#plt.ylabel("frequency")
+plt.hist(y1)
+plt.title("Fraction of 1's for 200 biased coin tosses a 100 times")
+plt.xlabel("Fraction of 1's in a given attempt (of 200 tosses)")
+plt.ylabel("frequency")
 
 #@ 6
 # compute a NumPy array y2 that is just like y1, except that in creating y2
@@ -91,7 +91,6 @@ def t1000():
     return np.random.choice(2, 1000, p=[0.1, 0.9])
 
 y2 = np.array([len(t1000()[t1000()==1])/len(t1000()) for i in range(100)])
-
 
 #@ 7
 # plot histograms for y1 and y2, with the histogram for y1 above 
