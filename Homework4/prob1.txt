@@ -8,7 +8,7 @@
 #
 
 #@ 1 -- enter 'a', 'b', or 'c'  (don't use quotes in your answer)
-c
+b
 
 #@ 2 -- enter 'y' or 'n'
 y
