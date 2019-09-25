@@ -123,7 +123,6 @@ ax[1].set_xlim([0.85, 0.95])
 # (assignment to x)
 x = np.random.choice(2, 10000, p=[0.99, 0.01])
 
-
 #@ 9
 # Simulate the measles test results on the people without measles,
 # based on the assumption that the measles test gives the right
