@@ -70,3 +70,19 @@ ax2 = plt.subplot(3,1,3)
 ax2.hist(y2)
 ax2.set_title("Plot for Y2")
 ax2.set_xlim([0.85, 0.95])
+
+
+
+prob_func = np.array([prob_cond_given_pos_bayes(x[i], 0.98, 0.95) for i in range(100)])
+
+#fig, ax = plt.subplots(1)
+## Option 1
+#ax[0].hist(prob_func)
+#ax[0].scatter(x, prob_cond_given_pos_bayes(x, 0.98, 0.95))
+
+## Option 2
+#ax[0].hist([prob_cond_given_pos_bayes(x[i], 0.98, 0.95) for i in range(100)])
+#ax[1].scatter(x, [prob_cond_given_pos_bayes(x[i], 0.98, 0.95) for i in range(100)])
+
+#ax[0].set_xlabel("Probability of having condition")
+#ax[0].set_ylabel("Probability of condition if tested positive")

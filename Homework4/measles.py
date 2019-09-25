@@ -256,11 +256,8 @@ def prob_cond_given_pos_bayes(prob_cond, prob_pos_given_cond, prob_neg_given_no_
 # appropriately.  Use matplotlib.
 # Assume function prob_cond_given_pos_bayes() is defined.
 # (produce a plot)
-x = np.arange(0.001, 0.1, ((0.1-0.001)/100))
-prob_func = np.array([prob_cond_given_pos_bayes(x[i], 0.98, 0.95) for i in range(100)])
-
-fig, ax = plt.subplots(2)
-ax[0].hist(prob_func)
-ax[1].scatter(x, prob_func)
-ax[1].set_xlabel("Probability of having condition")
-ax[1].set_ylabel("Probability of condition if tested positive")
+#x = np.arange(0.001, 0.1, ((0.1-0.001)/100))
+x = np.linspace(0.001, 0.1, 100)
+plt.scatter(x, prob_cond_given_pos_bayes(x, 0.98, 0.95))
+plt.xlabel("Probability of condition (%)")
+plt.ylabel("Probability of condition if tested positive (%)")
