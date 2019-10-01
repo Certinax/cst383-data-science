@@ -126,11 +126,15 @@ unemp.iloc[:10]
 # (write an expression)
 unemp.max()
 
+print(unemp)
+print(type(unemp))
 #@ 4
 # Set the index of unemp to be the data in the major series.
 # assume unemp and major are defined
 # (modify unemp)
 unemp.index = [major]
+print(unemp)
+print(type(unemp))
 
 #@ 5
 # Compute the 10 majors with the lowest unemployment rate, sorted 

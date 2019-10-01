@@ -1,0 +1,140 @@
+problem 1.4: Your output:
+  Major                                        
+  PETROLEUM ENGINEERING                            0.018381
+  MINING AND MINERAL ENGINEERING                   0.117241
+  METALLURGICAL ENGINEERING                        0.024096
+  NAVAL ARCHITECTURE AND MARINE ENGINEERING        0.050125
+  CHEMICAL ENGINEERING                             0.061098
+  NUCLEAR ENGINEERING                              0.177226
+  ACTUARIAL SCIENCE                                0.095652
+  ASTRONOMY AND ASTROPHYSICS                       0.021167
+  MECHANICAL ENGINEERING                           0.057342
+  ELECTRICAL ENGINEERING                           0.059174
+  COMPUTER ENGINEERING                             0.065409
+  ... (output cropped)
+  Correct output:
+  Major                                        
+  PETROLEUM ENGINEERING                            0.018381
+  MINING AND MINERAL ENGINEERING                   0.117241
+  METALLURGICAL ENGINEERING                        0.024096
+  NAVAL ARCHITECTURE AND MARINE ENGINEERING        0.050125
+  CHEMICAL ENGINEERING                             0.061098
+  NUCLEAR ENGINEERING                              0.177226
+  ACTUARIAL SCIENCE                                0.095652
+  ASTRONOMY AND ASTROPHYSICS                       0.021167
+  MECHANICAL ENGINEERING                           0.057342
+  ELECTRICAL ENGINEERING                           0.059174
+  COMPUTER ENGINEERING                             0.065409
+  ... (output cropped)
+problem 1.19: Your output:
+                                           Total
+  Major_category                                
+  Business                             1302376.0
+  Humanities & Liberal Arts             713468.0
+  Education                             559129.0
+  Engineering                           537583.0
+  Social Science                        529966.0
+  Psychology & Social Work              481007.0
+  Health                                463230.0
+  Biology & Life Science                453862.0
+  Communications & Journalism           392601.0
+  Arts                                  357130.0
+  ... (output cropped)
+  Correct output:
+  Major_category
+  Business                               1302376.0
+  Humanities & Liberal Arts               713468.0
+  Education                               559129.0
+  Engineering                             537583.0
+  Social Science                          529966.0
+  Psychology & Social Work                481007.0
+  Health                                  463230.0
+  Biology & Life Science                  453862.0
+  Communications & Journalism             392601.0
+  Arts                                    357130.0
+  Computers & Mathematics                 299008.0
+  ... (output cropped)
+problem 1.20: Your output:
+                                          Total
+  Major_category                               
+  Business                             0.192328
+  Humanities & Liberal Arts            0.105361
+  Education                            0.082569
+  Engineering                          0.079387
+  Social Science                       0.078262
+  Psychology & Social Work             0.071032
+  Health                               0.068407
+  Biology & Life Science               0.067024
+  Communications & Journalism          0.057977
+  Arts                                 0.052739
+  ... (output cropped)
+  Correct output:
+  Major_category
+  Business                               0.192328
+  Humanities & Liberal Arts              0.105361
+  Education                              0.082569
+  Engineering                            0.079387
+  Social Science                         0.078262
+  Psychology & Social Work               0.071032
+  Health                                 0.068407
+  Biology & Life Science                 0.067024
+  Communications & Journalism            0.057977
+  Arts                                   0.052739
+  Computers & Mathematics                0.044156
+  ... (output cropped)
+problem 1.25: Your output:
+                                       Median
+  Major_category                             
+  Engineering                          110000
+  Business                              62000
+  Physical Sciences                     62000
+  Law & Public Policy                   54000
+  Computers & Mathematics               53000
+  Arts                                  50000
+  Industrial Arts & Consumer Services   50000
+  Health                                48000
+  Social Science                        47000
+  Biology & Life Science                45000
+  ... (output cropped)
+  Correct output:
+  Major_category
+  Engineering                            110000
+  Physical Sciences                       62000
+  Business                                62000
+  Law & Public Policy                     54000
+  Computers & Mathematics                 53000
+  Industrial Arts & Consumer Services     50000
+  Arts                                    50000
+  Health                                  48000
+  Social Science                          47000
+  Biology & Life Science                  45000
+  Education                               41000
+  ... (output cropped)
+problem 1.26: Your output:
+                                             Median
+  Major_category                                   
+  Psychology & Social Work             30100.000000
+  Humanities & Liberal Arts            31913.333333
+  Education                            32350.000000
+  Arts                                 33062.500000
+  Communications & Journalism          34500.000000
+  Interdisciplinary                    35000.000000
+  Agriculture & Natural Resources      35111.111111
+  Industrial Arts & Consumer Services  36342.857143
+  Biology & Life Science               36421.428571
+  Health                               36825.000000
+  ... (output cropped)
+  Correct output:
+  Major_category
+  Psychology & Social Work               30100.000000
+  Humanities & Liberal Arts              31913.333333
+  Education                              32350.000000
+  Arts                                   33062.500000
+  Communications & Journalism            34500.000000
+  Interdisciplinary                      35000.000000
+  Agriculture & Natural Resources        35111.111111
+  Industrial Arts & Consumer Services    36342.857143
+  Biology & Life Science                 36421.428571
+  Health                                 36825.000000
+  Social Science                         37344.444444
+  ... (output cropped)
