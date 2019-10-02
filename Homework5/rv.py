@@ -95,8 +95,9 @@ class PMF:
     def plot(self):
         # YOUR CODE HERE
         # hint: I recommend using plt.bar()
-        plt.bar(self.support, self.probs, color='darkgreen')
-        plt.xticks(self.support)
+        bar_pos = np.arange(len(self.support))
+        plt.bar(bar_pos, self.probs, color='darkgreen')
+        plt.xticks(bar_pos, self.support)
         plt.xlabel("Support values")
         plt.ylabel("Corresponding probabilities")
         plt.title("PMF")
@@ -266,5 +267,3 @@ class RV:
         plt.xlabel("Values")
         plt.ylabel("Corresponding probabilities")
         plt.title("PMF")
-
-
