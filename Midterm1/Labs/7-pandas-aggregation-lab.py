@@ -25,10 +25,12 @@ df.drop('fnlwgt', axis=1, inplace=True)
 # =============================================================================
 
 # print the average age
-
+print(np.average(df["age"]))
 # get the min, max, and avg value for each numeric column
+print(df.select_dtypes(include=[np.number]).aggregate(["min", "max", "mean"]))
 
 # for a dataframe you get the aggregate for each column by default
+
 
 # =============================================================================
 # Aggregation with grouping
@@ -36,20 +38,28 @@ df.drop('fnlwgt', axis=1, inplace=True)
 
 # how many people in each category of education?
 # Try using pandas function value_counts().
+print(df["education"].value_counts())
 
 # for each native country, what is the average education num?
+print(df.groupby("native_country").aggregate({"education_num":'mean'}))
 
 # repeat the previous problem, sorting the output by the average
 # education num value
+print(df.groupby("native_country").aggregate({"education_num":"mean"}).sort_values(by="education_num"))
 
 # for each occupation, compute the median age
+print(df.groupby("occupation").aggregate({"age":"mean"}))
 
 # repeat the previous problem, but sort the output
+print(df.groupby("occupation").aggregate({"age":"mean"}).sort_values(by="age"))
 
 # find average hours_per_week for those with age <= 40, and those with age > 40
+print(df.groupby([df.age <= 40, df.age > 40]).aggregate({"hours_per_week":"mean"}))
 
 # do the same, but for age groups < 40, 40-60, and > 60
-
+#print(df.groupby([df.age < 40, df.age >= 40 & df.age <= 60, df.age > 60]).aggregate({"hours_per_week":"mean"}))
+print(df.groupby([df.age == 60]).aggregate({"hours_per_week":"mean"}).rename(columns={'hours_per_week':'thora'}))
+print(df.columns)
 # get the rows of the data frame, but only for occupations
 # with an average number of education_num > 10
 # Hint: use filter

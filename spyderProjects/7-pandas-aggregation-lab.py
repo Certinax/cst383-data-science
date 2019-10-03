@@ -38,7 +38,7 @@ print(df.aggregate(['mean','min','max']))
 
 # how many people in each category of education?
 # Try using pandas function value_counts().
-print(df["education"].values_count())
+print(df["education"].value_counts())
 
 # for each native country, what is the average education num?
 

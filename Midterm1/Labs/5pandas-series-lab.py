@@ -55,20 +55,26 @@ print(type(x))
 student_dist = {'Sean':8.1, 'Laura':5.4, 'Angel':12.8, 'Austin':15.0, 'Jose':22.2, 'Ana':18.5}
 
 # create a Pandas series 'distance' that gives the distance for each student
-distance = pd.Series(student_dist.values, index=student_dist.index)
+distance = pd.Series(student_dist)
+print(distance)
 
 # create a series 'rt_distance' from 'distance' that gives the round-trip distance
 # hint: use a vectorized operation
+rt_distance = distance * 2
+print(rt_distance)
 
 # write code to see if the rt_distance series, and the mpg series, mention
 # the same students
 # hint: index objects support an 'equals' method
+print(rt_distance.index.equals(mpg.index))
 
 # compute the gallons used in each CSUMB commute for each student by 
 # dividing the round-trip distance values by the mpg values
+print(rt_distance/mpg)
 
 # repeat your calculation, but now give a value of 0 for students that
 # students not represented in the mpg or rt_distance time series
+print(rt_distance.divide(mpg, fill_value=0))
 
 # If you still have time, play more with some Pandas series
 # to get comfortable with indexing.  Also, play with other

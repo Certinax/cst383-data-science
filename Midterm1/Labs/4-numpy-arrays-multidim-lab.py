@@ -50,7 +50,7 @@ print((df > 2).sum())
 
 # using a list comprehension, compute the total score for each student
 # and assign the result to variable 'totals' as a NumPy array
-totals = sum(df)
+totals = np.sum(df, axis=1)
 
 # print the dtype of totals; it should be int64
 print(totals.dtype)
@@ -75,9 +75,9 @@ print(prob_means.min())
 # compute a new array df_centered, which is a 2D array with
 # the same shape as df, but contains, for each column, the
 # column values minus the average value for each column.
-df_centered = df - prob_means
-print(df)
-print(df_centered)
+#df_centered = df - prob_means
+#print(df)
+#print(df_centered)
 # What do you expect as the average values of the columns of
 # dat_centered?  Print the result to find out.
 
