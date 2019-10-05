@@ -1,0 +1,194 @@
+import numpy as np
+import pandas as pd
+
+pd.set_option('display.max_columns', 500)
+
+# Read the data.  This data is a subset of the 2016 presidential
+# campaign contribution data for the state of California.
+
+df = pd.read_csv("https://raw.githubusercontent.com/grbruns/cst383/master/campaign-ca-2016-sample.csv")
+
+# get a summary of the data, and get a rough
+# idea of where NA values lie
+
+df.info()
+
+#@ 1
+# What is the total number of NAs in df?
+# (compute a number)
+
+(my code for 1)
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 20000 entries, 0 to 19999
+Data columns (total 18 columns):
+cmte_id              20000 non-null object
+cand_id              20000 non-null object
+cand_nm              20000 non-null object
+contbr_nm            20000 non-null object
+contbr_city          20000 non-null object
+contbr_st            20000 non-null object
+contbr_zip           20000 non-null object
+contbr_employer      18792 non-null object
+contbr_occupation    19822 non-null object
+contb_receipt_amt    20000 non-null float64
+contb_receipt_dt     20000 non-null object
+receipt_desc         406 non-null object
+memo_cd              619 non-null object
+memo_text            7809 non-null object
+form_tp              20000 non-null object
+file_num             20000 non-null int64
+tran_id              20000 non-null object
+election_tp          19989 non-null object
+dtypes: float64(1), int64(1), object(16)
+memory usage: 2.7+ MB
+Out[1]: 52563
+
+(my code for 2)
+Out[2]: 0.14600833333333332
+
+(my code for 3)
+Out[3]: 
+receipt_desc         0.97970
+memo_cd              0.96905
+memo_text            0.60955
+contbr_employer      0.06040
+contbr_occupation    0.00890
+election_tp          0.00055
+dtype: float64
+
+(my code for 4)
+Out[4]: array(['memo_cd', 'memo_text', 'receipt_desc'], dtype=object)
+
+(my code for 5)
+Out[5]: 
+receipt_desc         0.372772
+memo_cd              0.741491
+memo_text            0.973422
+contbr_employer      0.996404
+contbr_occupation    0.999791
+election_tp          1.000000
+form_tp              1.000000
+contb_receipt_dt     1.000000
+contb_receipt_amt    1.000000
+tran_id              1.000000
+file_num             1.000000
+contbr_zip           1.000000
+contbr_st            1.000000
+contbr_city          1.000000
+contbr_nm            1.000000
+cand_nm              1.000000
+cand_id              1.000000
+cmte_id              1.000000
+dtype: float64
+
+(my code for 6)
+Out[6]: 0.975
+
+(my code for 7)
+Out[7]: 0
+
+(my code for 8)
+Out[8]: 
+RETIRED                                   3419
+NOT EMPLOYED                              2305
+SELF-EMPLOYED                             1206
+SELF                                      1057
+SELF EMPLOYED                              625
+NONE                                       606
+INFORMATION REQUESTED PER BEST EFFORTS     342
+INFORMATION REQUESTED                      249
+HOMEMAKER                                  207
+STATE OF CALIFORNIA                         84
+GOOGLE                                      60
+KAISER PERMANENTE                           59
+STANFORD UNIVERSITY                         37
+UNIVERSITY OF CALIFORNIA                    37
+APPLE                                       31
+Name: contbr_employer, dtype: int64
+
+(my code for 9)
+Out[9]: 
+                           contbr_employer  \
+0                                  RETIRED   
+1                             NOT EMPLOYED   
+2                            SELF-EMPLOYED   
+3                                     SELF   
+4                            SELF EMPLOYED   
+5                                     NONE   
+6   INFORMATION REQUESTED PER BEST EFFORTS   
+7                    INFORMATION REQUESTED   
+8                                HOMEMAKER   
+9                      STATE OF CALIFORNIA   
+10                                  GOOGLE   
+11                       KAISER PERMANENTE   
+12                     STANFORD UNIVERSITY   
+13                UNIVERSITY OF CALIFORNIA   
+14                                   APPLE   
+
+                         contbr_occupation    contbr_city  
+0                                  RETIRED    LOS ANGELES  
+1                             NOT EMPLOYED  SAN FRANCISCO  
+2                                 ATTORNEY      SAN DIEGO  
+3                                HOMEMAKER       SAN JOSE  
+4   INFORMATION REQUESTED PER BEST EFFORTS        OAKLAND  
+5                                  TEACHER     SACRAMENTO  
+6                                 ENGINEER       BERKELEY  
+7                                PHYSICIAN   SANTA MONICA  
+8                                     NONE  SANTA BARBARA  
+9                    INFORMATION REQUESTED     LONG BEACH  
+10                       SOFTWARE ENGINEER       PASADENA  
+11                              CONSULTANT      PALO ALTO  
+12                                   SALES         FRESNO  
+13                                     CEO  NEWPORT BEACH  
+14                               PROFESSOR     SANTA ROSA  
+
+(my code for 10)
+
+(my code for 11)
+
+(my code for 12)
+Out[12]: 
+array(['SELF', 'SELF EMPLOYED', 'SELF-EMPLOYED',
+       'SELF EMPLOYED FIREARMS INSTRUCTOR', 'SELF EMPLOYED APPRAISER',
+       'SELFEMPLOYED', 'SELF EMPLOYED SYNTHESIZER DESIGNER',
+       'SELF EMPLOYED ARTIST', 'SELF- EMPLOYED',
+       'SELF EMPLOYED TAX PREPARER', 'SELFEMPOLYED',
+       'PRESIDENT/SELF-EMPLOYED', 'SELF-EMPLOYED PROPERTY MANAGER',
+       'ROOFER SELF EMPLOYED', 'SELF EMPLOYED ESTATE LIQUIDATOR',
+       'SELF STORAGE MANAGER', 'SELF-EMPLOYED SMALL BUSINESS',
+       'SELF EMPLOYED BUILDING CONTRACTOR'], dtype=object)
+
+(my code for 13)
+
+(my code for 14)
+
+(my code for 15)
+Out[15]: 1
+
+(my code for 16)
+Out[16]: 0.011956576116864275
+
+df.info()
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 19989 entries, 0 to 19999
+Data columns (total 15 columns):
+cmte_id              19989 non-null object
+cand_id              19989 non-null object
+cand_nm              19989 non-null object
+contbr_nm            19989 non-null object
+contbr_city          19989 non-null object
+contbr_st            19989 non-null object
+contbr_zip           19989 non-null object
+contbr_employer      18196 non-null object
+contbr_occupation    19241 non-null object
+contb_receipt_amt    19989 non-null float64
+contb_receipt_dt     19989 non-null object
+form_tp              19989 non-null object
+file_num             19989 non-null int64
+tran_id              19989 non-null object
+election_tp          19989 non-null object
+dtypes: float64(1), int64(1), object(13)
+memory usage: 2.4+ MB
+
+(df['contbr_occupation'] == 'NONE').sum()
+Out[18]: 256
