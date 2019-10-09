@@ -60,7 +60,6 @@ df.isna().sum().sum()/df.size
 # (compute a Pandas Series)
 df.isna().mean()[df.isna().mean() != 0].sort_values(ascending=False)
 
-
 #@ 4
 # Which columns contain more than 40% NA values?
 # (compute a NumPy array of the column names, sorted alphabetically)
@@ -96,7 +95,6 @@ np.cumsum((df.isna().sum()/df.isna().sum().sum()).sort_values(ascending=False))
 # of the values represent missing values?
 # (compute a Series)
 df["contbr_employer"].dropna().value_counts()[:15]
-
 
 #@ 9
 # Repeat the previous problem, but this time create a data
@@ -147,7 +145,7 @@ np.unique(df["contbr_occupation"][df["contbr_occupation"].str.contains("SELF", n
 # Update df to remove all columns containing at least 50% non-NA values.
 # Use DataFrame.dropna with the 'thresh' option
 # (write a pd.DataFrame.dropna() statement)
-df.dropna(axis=1, thresh=int(len(df)/2), inplace=True)
+df.dropna(axis=1, thresh=int(df.shape[0]/2), inplace=True)
 
 #@ 14
 # Column election_tp has a very small number of NA values.
