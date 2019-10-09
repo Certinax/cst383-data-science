@@ -41,7 +41,7 @@ df = pd.read_csv("https://raw.githubusercontent.com/grbruns/cst383/master/campai
 # get a summary of the data, and get a rough
 # idea of where NA values lie
 
-#df.info()
+df.info()
 
 #@ 1
 # What is the total number of NAs in df?
@@ -70,7 +70,6 @@ df.columns[df.isna().mean() > 0.4].sort_values().values
 # Compute a series that show the cumulative fraction of
 # NA data contained in columns, ordered by most-NA column first.
 # (compute a NumPy series)
-#print(df.isna().mean().sort_values(ascending=False))
 np.cumsum((df.isna().sum()/df.isna().sum().sum()).sort_values(ascending=False))
 
 #@ 6
@@ -142,7 +141,6 @@ df["contbr_employer"].replace("NONE", "NOT EMPLOYED", inplace=True)
 # all the values in 'contbr_occupation' that contain the string 'SELF'.
 # You may want to use pd.Series.str.contains().  Check out the 'na' option.
 # (compute a NumPy array)
-#print(df["contbr_occupation"].value_counts()[:15])    
 np.unique(df["contbr_occupation"][df["contbr_occupation"].str.contains("SELF", na=False)].values)
 
 #@ 13
@@ -173,6 +171,6 @@ df["contbr_zip"].str.contains("[^0-9]").sum()
 #@ Here are some tests that look at your final data frame
 # (you do not need to provide code here)
 
-#df.info()
+df.info()
 
-#print((df['contbr_occupation'] == 'NONE').sum())
+print((df['contbr_occupation'] == 'NONE').sum())
