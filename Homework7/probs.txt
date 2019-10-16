@@ -10,11 +10,11 @@
 # not use quotes.
 petal_length, petal_width
 #@ 2 -- enter a number between 0 and 1
-0.33
+0.333
 #@ 3 -- enter a number between 0 and 1
 0.909
 #@ 4 -- enter a number between 0 and 1
-0.393
+0.399
 #@ 5 -- enter a number between 0 and 1
 0.329
 

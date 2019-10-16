@@ -49,7 +49,7 @@ print(df[(df.sepal_length < 5) & (df.species.isin(["setosa"]))].shape[0]/df[df.s
 # What is the conditional probability that an iris has sepal 
 # length less than 5 given its species is “setosa”?
 
-#print(df[df.sepal_length < 5].shape[0]/df[df["species"] == "setosa"].shape[0])
+print(df[df.sepal_length < 5].shape[0]/df[df["species"] == "setosa"].shape[0])
 
 ### 0.393
 

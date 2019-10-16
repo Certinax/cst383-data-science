@@ -6,17 +6,17 @@
 #
 
 #@ 1 -- enter 'a' or 'b'   (don't use quotes in your answers)
-
+b
 #@ 2 -- enter 'a' or 'b'
-
+a
 #@ 3 -- enter 'Y' or 'N'
-
+Y
 #@ 4 -- enter 'a', 'b', or 'c'
-
+b
 #@ 5 -- enter a number
-
+3
 #@ 6 -- enter 'a' or 'b'
-
+b
 
 
 
