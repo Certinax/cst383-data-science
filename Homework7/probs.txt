@@ -8,15 +8,15 @@
 #@ 1 -- enter the names of the two features, separated by commas
 # Write the names exactly as they appear as column names.  Do
 # not use quotes.
-
+petal_length, petal_width
 #@ 2 -- enter a number between 0 and 1
-
+0.33
 #@ 3 -- enter a number between 0 and 1
-
+0.909
 #@ 4 -- enter a number between 0 and 1
-
+0.393
 #@ 5 -- enter a number between 0 and 1
-
+0.329
 
 
 
