@@ -26,12 +26,12 @@ knn = KNeighborsClassifier(n_neighbors=3)
 
 knn.fit(X_train, y_train)
 
-accuracy = knn.score(X_test, y_test)
+#accuracy = knn.score(X_test, y_test)
 
-print(accuracy)
+#print(accuracy)
 
-blind_prediction = pd.Series(y_train).value_counts()[0]
+#blind_prediction = pd.Series(y_train).value_counts()[0]
 
-print(blind_prediction)
+#print(blind_prediction)
 
-baseline_accuracy = 
+#baseline_accuracy = 
