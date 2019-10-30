@@ -24,19 +24,29 @@ class KNNRegressor:
     
     def __init__(self, k):
         """ Create a knn classifier with the given value k"""
-        
         # your code here
+        self.k = k
         
     def fit(self, X, y):
         """ X is a 2D numeric array and y is a 1D array """
-        
         # your code here
-
+        self.X = X
+        self.y = y
+        
+    def meanMe(self, x):
+        return np.mean(x)
+    
     
     def predict(self, X):
         """ Return an array containing the predicted class for each row of X """
-
         # your code here
+        dm = distance_matrix(X, self.X)
+        indexes_k_smallest = np.argsort(dm)[:,:self.k]
+        closest_values = self.y[indexes_k_smallest]
+        
+        nearest = np.apply_along_axis(self.meanMe, 1, closest_values)
+
+        return nearest
     
     def score(self, X, y):
         """ 
@@ -45,8 +55,12 @@ class KNNRegressor:
         sklearn.neighbors.KNeighborsRegressor to see how
         to calculate R^2.
         """
-
         # your code here
+        u = ((y - self.predict(X)) ** 2).sum()
+        v = ((y - y.mean()) ** 2).sum()
+        R2 = 1-(u/v)
+        
+        return R2
 
 
 def main():

@@ -48,13 +48,10 @@ class KNNClassify:
         return nearest
 
     def numOfCorrectPredictions(self, predictions, y_test):
-        correct_predict = 0
         
-        for i, j in enumerate(y_test):
-            if(y_test[i] == predictions[i]):
-                correct_predict += 1
-                
-        return correct_predict
+        correct_predictions = np.equal(predictions, y_test).sum()
+
+        return correct_predictions
 
 
     def score(self, X, y):
@@ -78,7 +75,6 @@ def main():
 
     X = df[['F.Undergrad', 'Top10perc']].apply(zscore).values
     y = df['Private'].values
-
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
     
     # test this class

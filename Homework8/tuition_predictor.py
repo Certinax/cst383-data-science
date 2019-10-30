@@ -24,6 +24,8 @@ Do not modify any code
 
 import numpy as np
 from sklearn.neighbors import KNeighborsRegressor
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 class TuitionPredictor:
     """ Predict college tuitions using KNN regression.  """
@@ -42,33 +44,42 @@ class TuitionPredictor:
         # - save the indexes of the columns you want to use
         # - decide on value of k that you want to use
         # - create, train, and save a KNeighborsRegressor object
+        private = 0
+        room_board = 8
+        expend = 15
+        grad_rate = 16
+        
+        self.index = [private, room_board, expend, grad_rate]
+        k = 9
+        knn = KNeighborsRegressor(n_neighbors=k)
+        self.knn = knn.fit(X[:, self.index], y)
+        
         
     def predict(self, X):
         """
         Return the predicted tuition for each row of X.
         X is a dataframe of the same type as X_train in method __init__.
         """
-        
         # your code here
         # you will use your KNeighborsRegressor object
+        return self.knn.predict(X[:, self.index])
     
     def score(self, X, y):
         """
         Return the R^2 score for for the given test data.
         """
-        
         # your code here
         # you will use your KNeighborsRegressor here
+        return self.knn.score(X[:, self.index], y)
     
     def rmse(self, X, y):
         """
         Return the room mean squared error score for for the given test data.
         """
-        
         # your code here
         # you will use your KNeighborsRegressor to make predictions, and
         # then compute the RMSE
-
+        return np.sqrt(((self.predict(X) - y)**2).mean())
 
 def main():
     """ Tests """
@@ -83,12 +94,13 @@ def main():
     y = df['Outstate'].values
     df.drop('Outstate', inplace=True, axis=1)
     X = df.apply(zscore).values
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
     
     tp = TuitionPredictor(X_train, y_train)
     
     print('score: {:.4f}'.format(tp.score(X_test, y_test)))
     print('rmse: {:.4f}'.format(tp.rmse(X_test, y_test)))
+    
     
 if __name__ == "__main__":
     main()
