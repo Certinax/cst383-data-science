@@ -37,13 +37,25 @@ def calcRmse(X, y, optional=0):
 X = df[["cach", "chmax"]].apply(zscore).values
 calcRmse(X,y)
 
+X = df[["cach", "chmax"]].values
+calcRmse(X,y)
+
 X = df[["cach", "chmin"]].apply(zscore).values
+calcRmse(X,y)
+
+X = df[["cach", "chmin"]].values
 calcRmse(X,y)
 
 X = df[["cach", "chmin", "chmax"]].apply(zscore).values
 calcRmse(X,y)
 
+X = df[["cach", "chmin", "chmax"]].values
+calcRmse(X,y)
+
 X = df[["cach", "chmin", "chmin"]].apply(zscore).values
+calcRmse(X,y)
+
+X = df[["cach", "chmin", "chmin"]].values
 calcRmse(X,y)
 
 
