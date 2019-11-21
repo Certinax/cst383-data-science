@@ -1,0 +1,37 @@
+
+#
+# Please edit this file by inserting your answer on the line after
+# each problem.
+#
+# DO NOT edit the file in any other way!
+#
+
+# Reading
+
+#@ 1 -- enter 'a', 'b', or 'c'   (don't use quotes in any of your answers)
+b
+#@ 2 -- enter a decimal number  (use 2 significant figures, no fractions)
+0.91
+#@ 3 -- enter a decimal number  (use 2 significant figures, no fractions)
+0.72
+#@ 4 -- enter 'a', 'b', or 'c'
+b
+#@ 5 -- enter 'Y' or 'N'
+Y
+#@ 6 -- enter 'a', 'b', or 'c'  (enter all that apply, separated by commas)
+b,c
+#@ 7 -- enter 'T' or 'F'
+F
+#@ 8 -- enter 'T' or 'F'
+T
+#@ 9 -- enter 'a' or 'b'
+b
+#@ 10 -- enter 'a', 'b', or 'c'
+a
+
+
+
+
+
+
+

@@ -13,6 +13,4 @@ y_predict = np.array([3.0,2.2,2.4])
 
 print(((y_test-y_predict)**2).mean())
 
-print(np.median(np.array([1,2,3,3])))
-
-print(np.median(y_test))
+print(np.array([1,2,3,3]))
