@@ -1,0 +1,17 @@
+#
+# Please edit this file by inserting your answer on the line after
+# each problem.
+#
+# DO NOT edit the file in any other way!
+#
+
+#@ 1 -- enter 'a' or 'b'   (don't use quotes in any of your answers)
+a
+#@ 2 -- enter 'a' or 'b'
+b
+#@ 3 -- enter 'T' or 'F'
+T
+#@ 4 -- enter 'Y' or 'N'
+Y
+#@ 5 -- enter 'a' or 'b'
+a

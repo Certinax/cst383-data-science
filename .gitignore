@@ -1,6 +1,9 @@
 feedback.txt
 */feedback.txt
 
+slides/
+DataScienceSlides.zip
 
+*.csv
 *.ai
 */*.ai
